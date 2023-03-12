@@ -1,0 +1,271 @@
+/* Rotate Animation */
+
+@keyframes slide1 {
+	0% {
+		transform: translate(-50%, 20px);
+	}
+	100%{
+		transform: translate(-155%, 10px);	
+	}
+}
+
+@keyframes slide2 {
+	0% {
+		transform: translate(52%, 10px);
+	}
+	100%{
+		transform: translate(-50%, 20px);	
+	}
+}
+
+@keyframes slide3 {
+	0% {
+		transform: scale(0.9) translate(56%, -5%);
+	}
+	100%{
+		transform: translate(55%, 10px;);	
+	}
+}
+
+@keyframes slide4 {
+	0% {
+		transform: scale(0.9) translate(-55%, -5%);
+	}
+	100%{
+		transform: scale(0.9) translate(56%, -5%);
+	}
+}
+
+@keyframes slide5 {
+	0% {
+		transform: scale(0.9) translate(-167%,-5%);
+	}
+	100%{
+		transform: scale(0.9) translate(-55%, -5%);
+	}
+}
+
+@keyframes slide6 {
+	0% {
+		transform: translate(-155%, 10px);
+	}
+	100%{
+		transform: scale(0.9) translate(-167%,-5%);
+	}
+}
+
+/* Overlay Animation */
+
+@keyframes pan-overlay {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 0 -100%;
+	}
+}
+
+/* Image Zoom */
+
+@keyframes pan-img {
+	0%{
+		background-position: top center;
+		background-size: auto 100%;
+	}
+	20% {
+		background-position: top center;
+		background-size: auto 110%;
+	}
+	20.0001% {
+		background-position: 90% 50%;
+		background-size: 200%;
+	}
+	40% {
+		background-position: 80% 40%;
+		background-size: 200%;
+	}
+	40.0001% {
+		background-position: 80% 100%;
+		background-size: 200%;
+	}
+	60% {
+		background-position: 90% 90%;
+		background-size: 200%;
+	}
+	60.0001% {
+		background-position: 10% 70%;
+		background-size: 200%;
+	}
+	80% {
+		background-position: 0% 80%;
+		background-size: 200%;
+	}
+	80.0001% {
+		background-position: 15% 0%;
+		background-size: 200%;
+	}
+	100% {
+		background-position: 25% 10%;
+		background-size: 200%;
+	}
+}
+
+body{
+	margin: 0;
+	background: #416FEC;
+	overflow: hidden;
+}
+
+.main{
+	width: 100%;
+	height: 100%;
+	float: left;
+	position: relative;
+}
+
+.screen{
+	width: 350px;
+	border: 3px solid #66f;
+	aspect-ratio: 10/16;
+	border-radius: 5px;
+	background: #ccf;
+	overflow: hidden;
+	position: absolute;
+	top: 15px;
+	left: 50%;
+	box-shadow: 2px 2px 9px #000;
+	background: #000;
+	transition: opacity 1s;
+}
+.content{
+	width: 100%;
+	height: 100%;
+	float: left;
+	position: relative;
+}
+
+/* Images */
+
+.screen1 .img{
+	background: url(images/img_1.jpg) center center;
+	background-size: auto 100%;
+}
+
+.screen2 .img{
+	background: url(images/img_2.jpg)  center center;
+	background-size: auto 100%;
+}
+
+.screen3 .img{
+	background: url(images/img_3.jpg)  center center;
+	background-size: auto 100%;
+}
+
+.screen4 .img{
+	background: url(images/img_4.jpg)  center center;
+	background-size: auto 100%;
+}
+
+.screen5 .img{
+	background: url(images/img_5.jpg)  center center;
+	background-size: auto 100%;
+}
+
+.screen6 .img{
+	background: url(images/img_6.jpg)  center center;
+	background-size: auto 100%;
+}
+
+.img{
+	width: 100%;
+	height: 100%;	
+	position: absolute;
+	z-index: 2;
+	background-position: center center;
+	transition: all 1s;
+}
+
+.screen[data-index="1"] .img, .screen[data-index="3"] .img{
+	opacity: 0.3;
+}
+
+.screen[data-index="4"] .img, .screen[data-index="5"] .img, .screen[data-index="6"] .img{
+	opacity: 0.1;
+}
+
+/* Zoom Animation */
+
+.screen[data-index="2"] .img{
+	animation: pan-img 10s infinite linear;
+}
+
+/* Overlay */
+
+.overlay{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: linear-gradient(#66f, #66f 3px, #00f 3px, #00f 9px);
+	background-size: 100% 9px;
+	opacity: 0.4;
+	animation: pan-overlay 30s infinite linear;
+	z-index: 3;
+	transition: opacity 1s;
+}
+
+.screen[data-index="2"] .overlay{
+	opacity: 0.1;
+}
+
+/* Rotate Animation */
+
+.screen[data-index="1"]{
+	z-index: 100;
+	transform: translate(-155%, 10px);
+	animation: slide1 1.5s 1 linear;
+}
+
+.screen[data-index="2"]{
+	z-index: 99;	
+	transform: translate(-50%, 20px);
+	animation: slide2 1.5s 1 linear;	
+}
+
+.screen[data-index="3"]{
+	z-index: 98;
+	transform: translate(55%, 10px);
+	animation: slide3 1.5s 1 linear;
+}
+
+.screen[data-index="4"]{
+	z-index: 95;
+	transform: scale(0.9) translate(56%, -5%);
+	animation: slide4 1.5s 1 linear;
+}
+
+.screen[data-index="5"]{
+	z-index: 96;
+	transform: scale(0.9) translate(-55%, -5%);
+	animation: slide5 1.5s 1 linear;
+}
+
+.screen[data-index="6"]{
+	z-index: 97;
+	transform: scale(0.9) translate(-167%,-5%);
+	animation: slide6 1.5s 1 linear;
+}
+
+/* Rotate button */
+
+.botaorotate{
+	position: absolute;
+	right: 10px;
+	top: 300px;
+	width: 30px;
+	height: 30px;
+	background: #66f url(images/rotate.png) center center no-repeat;
+	background-size: 100%;
+	border-radius: 50%;
+	cursor: pointer;
+	box-shadow: 2px 2px 9px #000;
+}
